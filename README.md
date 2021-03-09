@@ -22,7 +22,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To use it in ERB like country select dropdown: 
+```ruby
+    select_country('object_name', 'method_name', {options}, {html_options})
+```
+
+For example,
+```ruby
+    select_country('address', 'country', {include_blank: true, selected: "IN"}, {class: "required control-element"})
+```
+
 
 ## Development
 
