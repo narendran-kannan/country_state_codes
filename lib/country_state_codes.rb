@@ -27,3 +27,14 @@ module CountryStateCodes
     end
   end
 end
+
+module ActionView
+  module Helpers
+    module FormOptionsHelper
+      include CountryStateCodes
+      def select_country(object, method, options = {}, html_options = {}, &block)
+        select(object, method, CountryStateCodes::Country.codes, options, html_options, &block)
+      end
+    end
+  end
+end
