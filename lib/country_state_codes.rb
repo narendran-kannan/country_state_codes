@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'country_state_codes/version'
 require 'csv'
 module CountryStateCodes
-
+  # Country Class to get Country Codes.
   class Country
-    COUNTRY_FILE = './data/country_codes.csv'.freeze
+    COUNTRY_FILE = File.expand_path('data/country_codes.csv', __dir__)
 
     def self.codes
       begin
@@ -13,12 +15,12 @@ module CountryStateCodes
       end
     end
   end
-
+  # Country Class to get corresponding State Codes.
   class State
-    STATES_FOLDER = './data/states/'.freeze
+    STATES_FOLDER = File.expand_path('data/states', __dir__)
     def self.codes(country_code)
       begin
-        CSV.read("#{STATES_FOLDER}#{country_code.upcase}.csv", encoding: 'UTF-8:UTF-8')
+        CSV.read("#{STATES_FOLDER}/#{country_code.upcase}.csv", encoding: 'UTF-8:UTF-8')
       rescue StandardError
         []
       end
